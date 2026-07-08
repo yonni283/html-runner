@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Yonni Coding Studio</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="theme-dark">
+  <div class="app-shell">
+    <div class="top-bar">
+      <div class="brand">
+        <div class="brand-logo"></div>
+        <div>
+          <div class="brand-text-main">YONNI CODING STUDIO</div>
+          <div class="brand-text-sub">Built by Yonni — powered by creativity</div>
+        </div>
+      </div>
+      <div class="top-actions">
+        <div class="pill">
+          <span class="pill-dot"></span>
+          <span id="autosaveStatus">Autosave: on</span>
+        </div>
+
+        <div class="mode-toggle">
+          <button class="mode-toggle-btn active" data-mode="both">Code + Preview</button>
+          <button class="mode-toggle-btn" data-mode="code">Code only</button>
+          <button class="mode-toggle-btn" data-mode="preview">Preview only</button>
+        </div>
+
+        <button class="btn" id="themeToggle">
+          <span class="icon">☾</span>
+          <span>Theme</span>
+        </button>
+
+        <button class="btn" id="saveButton">
+          <span class="icon">💾</span>
+          <span>Save</span>
+        </button>
+
+        <button class="btn" id="downloadButton">
+          <span class="icon">⬇</span>
+          <span>Download HTML</span>
+        </button>
+
+        <button class="btn btn-primary" id="runButton">
+          <span>Run</span>
+          <span class="icon">▶</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="main">
+      <!-- LEFT PANEL: CODE -->
+      <div class="panel panel-left">
+        <div class="panel-header">
+          <div class="panel-title">
+            <span class="panel-title-dot"></span>
+            <span>Code</span>
+          </div>
+          <div class="panel-tabs" id="codeTabs">
+            <div class="panel-tab active" data-editor="html">
+              <span>HTML</span>
+              <span class="panel-tab-badge">markup</span>
+            </div>
+            <div class="panel-tab" data-editor="css">
+              <span>CSS</span>
+              <span class="panel-tab-badge">style</span>
+            </div>
+            <div class="panel-tab" data-editor="js">
+              <span>JS</span>
+              <span class="panel-tab-badge">logic</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-body">
+          <div class="editor-wrapper">
+            <div class="editor-meta">
+              <div class="editor-meta-left">
+                <div class="editor-chip">
+                  <span class="editor-chip-dot"></span>
+                  <span id="activeFileLabel">index.html</span>
+                </div>
+                <span>Live preview updates as you type</span>
+              </div>
+              <div class="editor-meta-right">
+                <span class="editor-lines" id="lineCount">Lines: 3</span>
+              </div>
+            </div>
+
+            <div class="editor-area" id="editorArea">
+              <textarea id="htmlEditor">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Yonni Coding Studio</title>
+</head>
+<body>
+  <main class="hero">
+    <section class="hero-content">
+      <h1>Welcome to Yonni Coding Studio</h1>
+      <p>Build, preview, and perfect your ideas in real time.</p>
+      <button class="hero-button">Get Started</button>
+    </section>
+  </main>
+</body>
+</html>
+              </textarea>
+
+              <textarea id="cssEditor" style="display:none;">
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", sans-serif;
+  background: radial-gradient(circle at top, #1f2937 0, #020617 45%, #000000 100%);
+  color: #e5e7eb;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  text-align: center;
+  max-width: 520px;
+  padding: 32px;
+  border-radius: 24px;
+  background: rgba(15,23,42,0.85);
+  border: 1px solid rgba(148,163,184,0.35);
+  box-shadow:
+    0 40px 80px rgba(15,23,42,0.9),
+    0 0 0 1px rgba(15,23,42,0.6);
+}
+
+.hero-content h1 {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.hero-content p {
+  font-size: 15px;
+  color: #9ca3af;
+  margin-bottom: 20px;
+}
+
+.hero-button {
+  padding: 10px 22px;
+  border-radius: 999px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #00e5ff, #4fc3f7);
+  color: #020617;
+  box-shadow: 0 0 22px rgba(0,229,255,0.7);
+  transition: 0.2s ease-out;
+}
+
+.hero-button:hover {
+  box-shadow: 0 0 30px rgba(0,229,255,0.9);
+  transform: translateY(-1px);
+}
+              </textarea>
+
+              <textarea id="jsEditor" style="display:none;">
+document.addEventListener("DOMContentLoaded", () => {
+  const button = document.querySelector(".hero-button");
+  if (!button) return;
+
+  button.addEventListener("click", () => {
+    alert("Yonni Coding Studio says hi 🚀");
+  });
+});
+              </textarea>
+
+              <div class="editor-overlay-gradient"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SPLITTER -->
+      <div class="splitter" id="splitter">
+        <div class="splitter-line"></div>
+      </div>
+
+      <!-- RIGHT PANEL: PREVIEW -->
+      <div class="panel panel-right">
+        <div class="panel-header panel-header-right">
+          <div class="panel-title">
+            <span class="panel-title-dot"></span>
+            <span>Preview</span>
+          </div>
+          <div class="panel-tabs">
+            <div class="panel-tab active">
+              <span>Live</span>
+              <span class="panel-tab-badge">auto</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel-body">
+          <div class="preview-wrapper">
+            <div class="preview-meta">
+              <div class="preview-chip">
+                <span class="preview-chip-dot"></span>
+                <span>Rendered output</span>
+              </div>
+              <span id="previewStatus">Synced</span>
+            </div>
+
+            <div class="preview-area" id="previewArea">
+              <iframe class="preview-frame" id="previewFrame"></iframe>
+              <div class="preview-refresh" id="previewRefresh">
+                <span class="preview-refresh-dot"></span>
+                <span>Preview updated</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
